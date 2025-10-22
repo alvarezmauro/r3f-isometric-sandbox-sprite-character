@@ -1,0 +1,52 @@
+/*
+ * Global styles for the sandbox application.
+ *
+ * The canvas fills the entire viewport so the 3D scene becomes the focus. Pointer
+ * events are disabled on the body to prevent accidental text selection while moving
+ * around with the keyboard.
+ */
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  touch-action: none;
+}
+
+/* Overlay showing movement instructions when needed. */
+.controlKeys {
+  position: absolute;
+  width: 20rem;
+  left: 50%;
+  margin-left: -10rem;
+  bottom: 13%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Credit text that sits at the bottom of the viewport. */
+.title {
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  color: darkgray;
+  position: absolute;
+  width: 100%;
+  bottom: 2%;
+  text-align: center;
+}
+
+.title > a {
+  color: rgb(79, 189, 249);
+}

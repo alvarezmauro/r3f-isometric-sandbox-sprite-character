@@ -1,0 +1,39 @@
+{
+  "name": "react-typescript",
+  "version": "1.0.0",
+  "description": "React and TypeScript example starter project",
+  "keywords": [
+    "typescript",
+    "react",
+    "starter"
+  ],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@react-three/drei": "10.2.0",
+    "@react-three/fiber": "9.1.2",
+    "bvhecctrl": "^0.0.12",
+    "leva": "0.10.0",
+    "loader-utils": "3.2.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "react-app-rewired": "^2.2.1",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
