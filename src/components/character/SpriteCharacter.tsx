@@ -440,17 +440,20 @@ export default function SpriteCharacter() {
       <mesh
         ref={meshRef}           // Attach ref for billboard rotation
         scale={[1.5, -1.5, 1]}     // Larger scale to make sprite more visible
+        castShadow                 // Enable shadow casting for this mesh
+        receiveShadow={false}      // Sprites typically don't need to receive shadows
       >
         {/* PlaneGeometry creates a flat 1x1 square */}
         <planeGeometry args={[1, 1]} />
 
         {/* Material defines how the sprite is rendered */}
+        {/* Using meshBasicMaterial for performance (unlit), but it can still cast shadows */}
         <meshBasicMaterial
           map={texture}              // Apply sprite sheet texture
           transparent                // Enable transparency for PNG alpha channel
-          alphaTest={0.1}           // Lower threshold to show more pixels
+          alphaTest={0.1}           // Pixels below this alpha value are discarded (important for shadow shape)
           side={DoubleSide}         // Render both front and back faces
-          depthWrite={false}        // Don't write to depth buffer (prevents z-fighting)
+          depthWrite={true}         // Enable depth writing for proper shadow casting
           color="white"             // Ensure no color tinting
         />
       </mesh>
