@@ -99,52 +99,52 @@ const SPRITE_MAP: Record<FacingDirection, SpriteDefinition> = {
   south: {
     row: 0,
     sequences: {
-      IDLE: { frames: [0, 1, 2, 3], fps: 4, loop: true }, // Breathing/idle animation
-      WALK: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 10, loop: true }, // Walking cycle
-      RUN: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 14, loop: true }, // Same frames, faster
-      JUMP_START: { frames: [4], fps: 1, loop: false }, // Single frame for jump start
-      JUMP_IDLE: { frames: [5, 6], fps: 3, loop: true }, // In-air animation
-      JUMP_FALL: { frames: [6, 7], fps: 3, loop: true }, // Falling animation
-      JUMP_LAND: { frames: [4, 3], fps: 8, loop: false }, // Landing recovery
+      IDLE: { frames: [6, 7, 8], fps: 3, loop: true },
+      WALK: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      RUN: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      JUMP_START: { frames: [7], fps: 1, loop: false },
+      JUMP_IDLE: { frames: [7], fps: 1, loop: false },
+      JUMP_FALL: { frames: [7], fps: 1, loop: false },
+      JUMP_LAND: { frames: [7], fps: 1, loop: false },
     },
   },
-  // East-facing (row 1): Character facing right
-  east: {
+  // North-facing (row 1): Character facing away from camera (shares row with south)
+  north: {
     row: 1,
     sequences: {
-      IDLE: { frames: [0, 1, 2, 3], fps: 4, loop: true },
-      WALK: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 10, loop: true },
-      RUN: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 14, loop: true },
-      JUMP_START: { frames: [4], fps: 1, loop: false },
-      JUMP_IDLE: { frames: [5, 6], fps: 3, loop: true },
-      JUMP_FALL: { frames: [6, 7], fps: 3, loop: true },
-      JUMP_LAND: { frames: [4, 3], fps: 8, loop: false },
+      IDLE: { frames: [6, 7, 8], fps: 3, loop: true },
+      WALK: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      RUN: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      JUMP_START: { frames: [7], fps: 1, loop: false },
+      JUMP_IDLE: { frames: [7], fps: 1, loop: false },
+      JUMP_FALL: { frames: [7], fps: 1, loop: false },
+      JUMP_LAND: { frames: [7], fps: 1, loop: false },
     },
   },
   // West-facing (row 2): Character facing left
   west: {
     row: 2,
     sequences: {
-      IDLE: { frames: [0, 1, 2, 3], fps: 4, loop: true },
-      WALK: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 10, loop: true },
-      RUN: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 14, loop: true },
-      JUMP_START: { frames: [4], fps: 1, loop: false },
-      JUMP_IDLE: { frames: [5, 6], fps: 3, loop: true },
-      JUMP_FALL: { frames: [6, 7], fps: 3, loop: true },
-      JUMP_LAND: { frames: [4, 3], fps: 8, loop: false },
+      IDLE: { frames: [6, 7, 8], fps: 3, loop: true },
+      WALK: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      RUN: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      JUMP_START: { frames: [7], fps: 1, loop: false },
+      JUMP_IDLE: { frames: [7], fps: 1, loop: false },
+      JUMP_FALL: { frames: [7], fps: 1, loop: false },
+      JUMP_LAND: { frames: [7], fps: 1, loop: false },
     },
   },
-  // North-facing (row 0): Character facing away from camera (shares row with south)
-  north: {
-    row: 0,
+  // East-facing (row 3): Character facing right
+  east: {
+    row: 3,
     sequences: {
-      IDLE: { frames: [0, 1, 2, 3], fps: 4, loop: true },
-      WALK: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 10, loop: true },
-      RUN: { frames: [0, 1, 2, 3, 4, 5, 6, 7], fps: 14, loop: true },
-      JUMP_START: { frames: [4], fps: 1, loop: false },
-      JUMP_IDLE: { frames: [5, 6], fps: 3, loop: true },
-      JUMP_FALL: { frames: [6, 7], fps: 3, loop: true },
-      JUMP_LAND: { frames: [4, 3], fps: 8, loop: false },
+      IDLE: { frames: [6, 7, 8], fps: 3, loop: true },
+      WALK: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      RUN: { frames: [0, 1, 2, 3, 4, 5], fps: 10, loop: true },
+      JUMP_START: { frames: [7], fps: 1, loop: false },
+      JUMP_IDLE: { frames: [7], fps: 1, loop: false },
+      JUMP_FALL: { frames: [7], fps: 1, loop: false },
+      JUMP_LAND: { frames: [7], fps: 1, loop: false },
     },
   },
 };
@@ -249,7 +249,7 @@ export default function SpriteCharacter() {
 
   // Load the sprite sheet texture from public folder
   // useTexture handles async loading and returns a Three.js Texture object
-  const texture = useTexture("./character-sprite.png");
+  const texture = useTexture("./character/character.png");
 
   // Configure texture settings (runs once when texture loads)
   // useMemo prevents reconfiguration on every render
