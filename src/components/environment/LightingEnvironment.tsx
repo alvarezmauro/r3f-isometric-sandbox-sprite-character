@@ -19,7 +19,7 @@ export default function LightingEnvironment() {
         background
         backgroundBlurriness={0.3}
         environmentIntensity={1.5}
-        preset="night"
+        files="/hdri/dikhololo_night_1k.hdr"
       />
 
       {/*
