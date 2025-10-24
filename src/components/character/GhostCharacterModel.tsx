@@ -30,9 +30,9 @@ export default function GhostCharacterModel() {
 
   return (
     <primitive
-      object={character.scene}
-      scale={0.34}
-      position={[0, -0.55, 0]}
+      object= { character.scene }
+  scale = { 0.34}
+  position = { [0, -0.55, 0]}
     />
   );
 }

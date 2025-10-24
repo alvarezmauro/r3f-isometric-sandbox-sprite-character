@@ -9,7 +9,7 @@ import BVHEcctrl, {
 import { button, useControls } from "leva";
 
 import LightingEnvironment from "../components/environment/LightingEnvironment";
-import GhostCharacterModel from "../components/character/GhostCharacterModel";
+import SpriteCharacter from "../components/character/SpriteCharacter";
 import CozyTavernMap from "../components/world/CozyTavernMap";
 import { CHARACTER_KEYBOARD_CONTROLS } from "../constants/keyboardControls";
 import { useFollowCamera } from "../hooks/useFollowCamera";
@@ -17,7 +17,7 @@ import { useFollowCamera } from "../hooks/useFollowCamera";
 /**
  * Main scene rendered inside the React Three Fiber canvas.
  *
- * It wires together the environment lighting, the tavern map, the ghost character
+ * It wires together the environment lighting, the tavern map, the sprite-based character
  * and the BVH-based character controller. Extensive inline comments describe how the
  * different libraries collaborate to create the experience.
  */
@@ -96,7 +96,7 @@ export default function IsometricSandboxScene() {
          * Three.js group via `controllerRef.current?.group`.
          */}
         <BVHEcctrl ref={controllerRef}>
-          <GhostCharacterModel />
+          <SpriteCharacter />
         </BVHEcctrl>
       </KeyboardControls>
 
