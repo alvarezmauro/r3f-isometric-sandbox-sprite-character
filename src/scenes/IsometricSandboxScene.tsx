@@ -98,8 +98,9 @@ export default function IsometricSandboxScene() {
          */}
         <BVHEcctrl
           ref={controllerRef}
+          acceleration={100}
           turnSpeed={1}         // radians per second
-          maxWalkSpeed={5}      // units per second
+          maxWalkSpeed={8}      // units per second
           counterVelFactor={0}  // no counter velocity
           deceleration={100}     // units per second squared
         >
