@@ -315,16 +315,15 @@ export default function SpriteCharacter() {
     // 1. DETERMINE FACING DIRECTION
     // ---------------------------------------------------------------------
 
-    // Use actual movement direction if moving, otherwise use input direction
-    // This allows character to face input direction even when stationary
-    const targetDirection =
-      characterStatus.movingDir.lengthSq() > 1e-6
-        ? characterStatus.movingDir
-        : characterStatus.inputDir;
-
-    // Only update facing direction if there's meaningful input
-    if (targetDirection.lengthSq() > 1e-6) {
-      directionRef.current = resolveFacingDirection(targetDirection);
+    // Only update facing direction when character is NOT idle
+    // When IDLE, we preserve the last direction to show the correct idle animation
+    // When moving (WALK/RUN), update the direction based on movement
+    if (animationStatus !== "IDLE" && characterStatus.movingDir.lengthSq() > 1e-6) {
+      const newDirection = resolveFacingDirection(characterStatus.movingDir);
+      if (directionRef.current !== newDirection) {
+        console.log('Direction changed:', directionRef.current, '->', newDirection);
+        directionRef.current = newDirection;
+      }
     }
 
     // ---------------------------------------------------------------------
@@ -333,6 +332,7 @@ export default function SpriteCharacter() {
 
     // When animation status changes (e.g., IDLE → WALK), reset the animation
     if (previousStatusRef.current !== animationStatus) {
+      console.log('Animation status changed:', previousStatusRef.current, '->', animationStatus, 'Direction:', directionRef.current);
       previousStatusRef.current = animationStatus;
       frameIndexRef.current = 0;  // Start from first frame
       elapsedRef.current = 0;     // Reset timer
