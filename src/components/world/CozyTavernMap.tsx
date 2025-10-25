@@ -21,7 +21,9 @@ export default function CozyTavernMap() {
     });
   }, [map]);
 
-  return <primitive object={map.scene} scale={1.5} />;
+  // rotate the map 45 degrees to match isometric view
+  // return <primitive object={map.scene} scale={1.5}/>;
+  return <primitive object={map.scene} scale={1.5} position={[0, 0, 0]} rotation={[0, -Math.PI / 4, 0]} />;
 }
 
 useGLTF.preload("./Cozy Tavern - First Floor 2.glb");

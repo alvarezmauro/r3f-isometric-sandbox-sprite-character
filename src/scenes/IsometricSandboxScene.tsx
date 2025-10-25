@@ -82,6 +82,7 @@ export default function IsometricSandboxScene() {
         colliderMeshes={colliderMeshes}
         smoothTime={0.1}
         makeDefault
+        enabled={false} // disable manual orbiting
       />
 
       {/*
@@ -95,7 +96,13 @@ export default function IsometricSandboxScene() {
          * complex geometry using a bounding volume hierarchy. It provides a physics-aware
          * Three.js group via `controllerRef.current?.group`.
          */}
-        <BVHEcctrl ref={controllerRef}>
+        <BVHEcctrl
+          ref={controllerRef}
+          turnSpeed={1}         // radians per second
+          maxWalkSpeed={5}      // units per second
+          counterVelFactor={0}  // no counter velocity
+          deceleration={100}     // units per second squared
+        >
           <SpriteCharacter />
         </BVHEcctrl>
       </KeyboardControls>
